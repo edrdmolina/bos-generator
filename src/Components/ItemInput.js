@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import formatter from '../Helpers/formatter';
+
 function ItemInfo(props) {
     const [title, updateTitle] = useState('');
     const [quantity, updateQuantity] = useState(1);
@@ -25,7 +27,7 @@ function ItemInfo(props) {
                 <th scope='row'>{i + 1}</th>
                 <td>{ item.title }</td>
                 <td className='text-center'>{ item.quantity }</td>
-                <td className='text-end'>{ item.price }</td>
+                <td className='text-end'>{ formatter.format(parseFloat(item.price)) }</td>
             </tr>
         )
     })
@@ -56,7 +58,7 @@ function ItemInfo(props) {
                         <label className='form-label' htmlFor='price'>Item Price</label>
                         <input 
                             className='form-control'
-                            type='number' name='price' id='price' required
+                            type='number' name='price' id='price' required min='0' step='.01'
                             value={price} onChange={ e => updatePrice(e.target.value) } 
                         />
                     </div>
@@ -87,7 +89,7 @@ function ItemInfo(props) {
                                 <th scope='row'></th>
                                 <th scope='row'></th>
                                 <th scope='row' className='text-center'>Total:</th>
-                                <th scope='row' className='text-end'>$ {total}</th>
+                                <th scope='row' className='text-end'>{formatter.format(total)}</th>
                             </tr>
                         </tfoot>
                     </table>
