@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import SellerInfo from './Pages/SellerInfo';
-import ItemInfo from './Components/ItemInfo';
+import ItemInfo from './Pages/ItemInfo';
 import Document from './Components/Document';
 
 function App() {
