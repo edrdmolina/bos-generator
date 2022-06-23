@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bos-generator/static/css/main.b9023634.css",
-    "main.js": "/bos-generator/static/js/main.81ea915f.js",
+    "main.css": "/bos-generator/static/css/main.4b757115.css",
+    "main.js": "/bos-generator/static/js/main.f95b8156.js",
     "static/js/236.de7710d1.chunk.js": "/bos-generator/static/js/236.de7710d1.chunk.js",
     "static/js/703.14350b3c.chunk.js": "/bos-generator/static/js/703.14350b3c.chunk.js",
     "static/js/573.555571f7.chunk.js": "/bos-generator/static/js/573.555571f7.chunk.js",
     "static/js/787.f61bea1e.chunk.js": "/bos-generator/static/js/787.f61bea1e.chunk.js",
     "static/media/CoastalLogo.png": "/bos-generator/static/media/CoastalLogo.f1aa07b10bba7983a7b9.png",
     "index.html": "/bos-generator/index.html",
-    "main.b9023634.css.map": "/bos-generator/static/css/main.b9023634.css.map",
-    "main.81ea915f.js.map": "/bos-generator/static/js/main.81ea915f.js.map",
+    "main.4b757115.css.map": "/bos-generator/static/css/main.4b757115.css.map",
+    "main.f95b8156.js.map": "/bos-generator/static/js/main.f95b8156.js.map",
     "236.de7710d1.chunk.js.map": "/bos-generator/static/js/236.de7710d1.chunk.js.map",
     "703.14350b3c.chunk.js.map": "/bos-generator/static/js/703.14350b3c.chunk.js.map",
     "573.555571f7.chunk.js.map": "/bos-generator/static/js/573.555571f7.chunk.js.map",
     "787.f61bea1e.chunk.js.map": "/bos-generator/static/js/787.f61bea1e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9023634.css",
-    "static/js/main.81ea915f.js"
+    "static/css/main.4b757115.css",
+    "static/js/main.f95b8156.js"
   ]
 }
