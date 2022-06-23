@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import SellerInfo from './Components/SellerInfo';
+import SellerInfo from './Pages/SellerInfo';
 import ItemInfo from './Components/ItemInfo';
 import Document from './Components/Document';
 
@@ -20,8 +20,7 @@ function App() {
   const [items, updateItems] = useState([]);
 
   return (
-    <div>
-      
+    <div className='container'>
       <Routes>
         <Route exact path='/' 
           element={ <SellerInfo sellerData={sellerData} updateSellerData={updateSellerData} /> } 
@@ -32,7 +31,6 @@ function App() {
         <Route exact path='/document'
           element={ <Document items={items} sellerData={sellerData}/> }
         />
-
       </Routes>
     </div>
   );
