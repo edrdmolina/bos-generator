@@ -3,102 +3,125 @@ import Pdf from "react-to-pdf";
 
 import createHumanDate from '../Helpers/createHumanDate';
 import createDocumentID from '../Helpers/createDocumentID';
-import CoastalLogo from '../Assets/CoastalLogo.jpg'
+import formatter from '../Helpers/formatter';
+import CoastalLogo from '../Assets/CoastalLogo.jpg';
+
+import '../Styles/Document.css';
 
 const ref = React.createRef();
 
 function Document(props) {
     const date = createHumanDate();
     const documentID = createDocumentID(props.sellerData.fullName)
+   
     let total = 0;
 
-    const items = props.items.map((item, i) => {
-        total += parseInt(item.price);
+    const showItems = props.items.map((item, i) => {
+        total += parseFloat(item.price);
+
         return (
-            <tr className='' key={i}>
-                <th scope="row" className="text-center">{i}</th>
-                <td className="text-left">{item.title}</td>
-                <td className="text-center">{item.quantity}</td>
-                <td className="text-center">{item.price}</td>
+            <tr key={i}>
+                <th scope='row'>{i + 1}</th>
+                <td>{ item.title }</td>
+                <td className='text-center'>{ item.quantity }</td>
+                <td className='text-end'>{ formatter.format(parseFloat(item.price)) }</td>
             </tr>
         )
     })
 
     return (
-        <div >
-            <div className='' ref={ref}>
-                <div className=''>
-                    <p>Date: {date}</p>
-                    <p className=''>BILL OF SALE</p>
-                    <p># {documentID}</p>
+        <div className='container'>
+            <div className='container document' ref={ref}>
+                <div className='row justify-content-between mt-4'>
+                    <div className='col text-start'>
+                        <p>Date: {date}</p>
+                    </div>
+                    <div className='col text-center'>
+                        <h4>BILL OF SALE</h4>
+                    </div>
+                    <div className='col text-end'>
+                        <p># {documentID}</p>
+                    </div>
                 </div>
-                <div className=''>
-                    <div className=''>
-                        <p className=''>Buyer Information:</p>
-                        <div className=''>
-                            <div className=''>
-                                <p className=''>Address:</p>
-                                <p>Coastal Film Lab</p>
-                                <p>1704 N Nebraska Ave</p>
-                                <p>Tampa, Florida 33602</p>
-                                <p>United States</p>
+                
+                <div className='row mt-5'>
+                    <div className='col-9'>
+                        <h5>Buyer Information:</h5>
+                        <div className='row'>
+                            <div className='col'>
+                                <h6 className='m-0'>Address:</h6>
+                                <p className='m-0'>Coastal Film Lab</p>
+                                <p className='m-0'>1704 N Nebraska Ave</p>
+                                <p className='m-0'>Tampa, Florida 33602</p>
+                                <p className='m-0'>United States</p>
                             </div>
-                            <div className=''>
-                                <p className=''>Contact</p>
-                                <p>+1 813-384-7588</p>
-                                <p>coastalfilmlab@gmail.com</p>
+                            <div className='col'>
+                                <h6 className='m-0'>Contact</h6>
+                                <p className='m-0'>+1 813-384-7588</p>
+                                <p className='m-0'>coastalfilmlab@gmail.com</p>
                             </div>
                         </div>
                     </div>
-                    <img src={CoastalLogo} className='' alt='logo' />
+                    <div className='col-3'>
+                        <img src={CoastalLogo} style={{height: '150px', width: '150px' }} alt='logo' />
+                    </div>
                 </div>
-                <div className=''>
-                    <div className=''>
-                        <p className=''>Seller Information:</p>
-                        <div className=''>
-                            <div className=''>
-                                <p className=''>Name:</p>
-                                <p>{props.sellerData.fullName}</p>
+                <hr/>
+
+                <div className='row mt-2'>
+                    <div className='col-12'>
+                        <h5>Seller Information:</h5>
+                        <div className='row'>
+                            <div className='col'>
+                                <h6 className='m-0'>Name:</h6>
+                                <p className='m-0'>{props.sellerData.fullName}</p>
                             </div>
-                            <div className=''>
-                                <p className=''>Address:</p>
-                                <p>{props.sellerData.addressLine1}</p>
-                                <p>{props.sellerData.addressLine2}</p>
-                                <p>{props.sellerData.city}, {props.sellerData.state} {props.sellerData.zipCode}</p>
-                                <p>{props.sellerData.country}</p>
+                            <div className='col'>
+                                <h6 className='m-0'>Address:</h6>
+                                <p className='m-0'>{props.sellerData.addressLine1}</p>
+                                <p className='m-0'>{props.sellerData.addressLine2}</p>
+                                <p className='m-0'>{props.sellerData.city}, {props.sellerData.state} {props.sellerData.zipCode}</p>
+                                <p className='m-0'>{props.sellerData.country}</p>
                             </div>
-                            <div className=''>
-                                <p className=''>Contact</p>
-                                <p>{props.sellerData.phone}</p>
-                                <p>{props.sellerData.email}</p>
+                            <div className='col'>
+                                <h6 className='m-0'>Contact</h6>
+                                <p className='m-0'>{props.sellerData.phone}</p>
+                                <p className='m-0'>{props.sellerData.email}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <table className="table table-striped">
+
+                <table className="table table-striped table-sm mt-5">
                     <thead>
-                        <tr className="text-center">
-                            <th scope="col">#</th>
-                            <th scope="col" className="text-left">Item Description</th>
-                            <th scope="col">QTY</th>
-                            <th scope="col">Price Paid</th>
+                        <tr>
+                            <th scope="col" style={{width: '5%'}}>#</th>
+                            <th scope="col" style={{width: '65%'}}>Item Description</th>
+                            <th scope="col" style={{width: '10%'}} className='text-center'>QTY</th>
+                            <th scope="col" style={{width: '20%'}} className='text-end'>Price Paid</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {items}
+                        {showItems} 
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colSpan={3} className="text-right ">Total:</td>
-                            <td className="text-center">{total}</td>
+                            <th scope='row'></th>
+                            <th scope='row'></th>
+                            <th scope='row' className='text-center'>Total:</th>
+                            <th scope='row' className='text-end'>{formatter.format(total)}</th>
                         </tr>
                     </tfoot>
                 </table>
             </div>
 
-            <Pdf targetRef={ref} filename={`${documentID}.pdf`}>
-                {({ toPdf }) => <button onClick={toPdf}>Capture as PDF</button>}
-            </Pdf>
+            <div className='row justify-content-center my-5'>
+                <div className='col-6 d-flex justify-content-center'>
+                    <Pdf targetRef={ref} filename={`${documentID}.pdf`}>
+                        {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>DOWNLOAD</button>}
+                    </Pdf>
+                </div>
+            </div>
         </div>
     )
 }
