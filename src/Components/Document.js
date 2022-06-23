@@ -1,5 +1,6 @@
 import React from 'react';
 import Pdf from "react-to-pdf";
+import { Link } from 'react-router-dom';
 
 import createHumanDate from '../Helpers/createHumanDate';
 import createDocumentID from '../Helpers/createDocumentID';
@@ -115,7 +116,10 @@ function Document(props) {
                 </table>
             </div>
 
-            <div className='row justify-content-center my-5'>
+            <div className='row my-5 justify-content-center'>
+                <div className='col-6 d-flex justify-content-center'>
+                    <Link className='btn btn-secondary' to='/items'>BACK</Link>
+                </div>
                 <div className='col-6 d-flex justify-content-center'>
                     <Pdf targetRef={ref} filename={`${documentID}.pdf`}>
                         {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>DOWNLOAD</button>}
