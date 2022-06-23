@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import formatter from '../Helpers/formatter';
 
@@ -10,7 +11,7 @@ function ItemInfo(props) {
 
     function addItem(e) {
         e.preventDefault();
-        const item = { title, quantity, price };
+        const item = { title, quantity, price, id: uuidv4() };
         props.updateItems([...props.items, item]);
         updateTitle('');
         updateQuantity(1);
@@ -27,7 +28,13 @@ function ItemInfo(props) {
                 <th scope='row'>{i + 1}</th>
                 <td>{ item.title }</td>
                 <td className='text-center'>{ item.quantity }</td>
-                <td className='text-end'>{ formatter.format(parseFloat(item.price)) }</td>
+                <td className='text-center'>{ formatter.format(parseFloat(item.price)) }</td>
+                <td className='text-center'>
+                    <i className="fas fa-trash-alt" />
+                </td>
+                <td className='text-center'>
+                    <i className="fas fa-edit" />
+                </td>
             </tr>
         )
     })
@@ -76,9 +83,11 @@ function ItemInfo(props) {
                         <thead>
                             <tr>
                                 <th scope="col" style={{width: '5%'}}>#</th>
-                                <th scope="col" style={{width: '65%'}}>Item Description</th>
-                                <th scope="col" style={{width: '10%'}} className='text-center'>QTY</th>
-                                <th scope="col" style={{width: '20%'}} className='text-end'>Price Paid</th>
+                                <th scope="col" style={{width: '50%'}}>Item Description</th>
+                                <th scope="col" style={{width: '5%'}} className='text-center'>QTY</th>
+                                <th scope="col" style={{width: '20%'}} className='text-center'>Price Paid</th>
+                                <th scope="col" style={{width: '10%'}} ></th>
+                                <th scope="col" style={{width: '10%'}} ></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,7 +98,9 @@ function ItemInfo(props) {
                                 <th scope='row'></th>
                                 <th scope='row'></th>
                                 <th scope='row' className='text-center'>Total:</th>
-                                <th scope='row' className='text-end'>{formatter.format(total)}</th>
+                                <th scope='row' className='text-center'>{formatter.format(total)}</th>
+                                <th scope='row'></th>
+                                <th scope='row'></th>
                             </tr>
                         </tfoot>
                     </table>
