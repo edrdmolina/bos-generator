@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import formatter from '../Helpers/formatter';
 
+import '../Styles/ItemInput.css';
+
 function ItemInfo(props) {
     const [title, updateTitle] = useState('');
     const [quantity, updateQuantity] = useState(1);
@@ -20,6 +22,17 @@ function ItemInfo(props) {
 
     let total = 0;
 
+    const handleDelete = e => {
+        const { id } = e.target
+
+        const newItems = props.items.filter(item => {
+            return (
+                item.id !== id
+            )
+        })
+        props.updateItems([...newItems]);
+    }
+
     const showItems = props.items.map((item, i) => {
         total += parseFloat(item.price);
 
@@ -30,11 +43,11 @@ function ItemInfo(props) {
                 <td className='text-center'>{ item.quantity }</td>
                 <td className='text-center'>{ formatter.format(parseFloat(item.price)) }</td>
                 <td className='text-center'>
-                    <i className="fas fa-trash-alt" />
+                    <i className="fas fa-trash-alt" onClick={handleDelete} id={item.id} />
                 </td>
-                <td className='text-center'>
+                {/* <td className='text-center'>
                     <i className="fas fa-edit" />
-                </td>
+                </td> */}
             </tr>
         )
     })
@@ -64,7 +77,7 @@ function ItemInfo(props) {
                     <div className='mb-3 col-md-5'>
                         <label className='form-label' htmlFor='price'>Item Price</label>
                         <input 
-                            className='form-control'
+                            className='form-control' placeholder='0'
                             type='number' name='price' id='price' required min='0' step='.01'
                             value={price} onChange={ e => updatePrice(e.target.value) } 
                         />
@@ -83,11 +96,11 @@ function ItemInfo(props) {
                         <thead>
                             <tr>
                                 <th scope="col" style={{width: '5%'}}>#</th>
-                                <th scope="col" style={{width: '50%'}}>Item Description</th>
+                                <th scope="col" style={{width: '60%'}}>Item Description</th>
                                 <th scope="col" style={{width: '5%'}} className='text-center'>QTY</th>
                                 <th scope="col" style={{width: '20%'}} className='text-center'>Price Paid</th>
                                 <th scope="col" style={{width: '10%'}} ></th>
-                                <th scope="col" style={{width: '10%'}} ></th>
+                                {/* <th scope="col" style={{width: '10%'}} ></th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -100,7 +113,7 @@ function ItemInfo(props) {
                                 <th scope='row' className='text-center'>Total:</th>
                                 <th scope='row' className='text-center'>{formatter.format(total)}</th>
                                 <th scope='row'></th>
-                                <th scope='row'></th>
+                                {/* <th scope='row'></th> */}
                             </tr>
                         </tfoot>
                     </table>

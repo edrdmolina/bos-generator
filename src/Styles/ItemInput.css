@@ -1,0 +1,8 @@
+td i:hover {
+    cursor: pointer;
+    color: #555;
+}
+
+td i:active {
+    transform: translate(1px, 1px);
+}
