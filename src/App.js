@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import SellerInfo from './Components/SellerInfo';
+import ItemInfo from './Components/ItemInfo';
+import Document from './Components/Document';
 
 function App() {
+  const [sellerData, updateSellerData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    country: '',
+  });
+  const [items, updateItems] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <Routes>
+        <Route exact path='/' 
+          element={ <SellerInfo sellerData={sellerData} updateSellerData={updateSellerData} /> } 
+        />
+        <Route exact path='/items' 
+          element={ <ItemInfo updateItems={updateItems} items={items} /> } 
+        />
+        <Route exact path='/document'
+          element={ <Document items={items} sellerData={sellerData}/> }
+        />
+
+      </Routes>
     </div>
   );
 }
