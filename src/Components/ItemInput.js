@@ -4,9 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 import formatter from '../Helpers/formatter';
 
+import EditModal from './EditModal';
+
 import '../Styles/ItemInput.css';
 
 function ItemInfo(props) {
+    const { items, updateItems } = props;
+
     const [title, updateTitle] = useState('');
     const [quantity, updateQuantity] = useState(1);
     const [price, updatePrice] = useState(0);
@@ -14,7 +18,7 @@ function ItemInfo(props) {
     function addItem(e) {
         e.preventDefault();
         const item = { title, quantity, price, id: uuidv4() };
-        props.updateItems([...props.items, item]);
+        updateItems([...props.items, item]);
         updateTitle('');
         updateQuantity(1);
         updatePrice(0);
@@ -30,10 +34,10 @@ function ItemInfo(props) {
                 item.id !== id
             )
         })
-        props.updateItems([...newItems]);
+        updateItems([...newItems]);
     }
 
-    const showItems = props.items.map((item, i) => {
+    const showItems = items.map((item, i) => {
         total += parseFloat(item.price);
 
         return (
@@ -45,9 +49,12 @@ function ItemInfo(props) {
                 <td className='text-center'>
                     <i className="fas fa-trash-alt" onClick={handleDelete} id={item.id} />
                 </td>
-                {/* <td className='text-center'>
-                    <i className="fas fa-edit" />
-                </td> */}
+                <td className='text-center'>
+                    <i className="fas fa-edit" data-bs-toggle="modal" data-bs-target={`#item${i}`} />
+                </td>
+                <td>
+                    <EditModal {...item} items={items} updateItems={updateItems} itemNumber={i} />
+                </td>
             </tr>
         )
     })
@@ -113,7 +120,7 @@ function ItemInfo(props) {
                                 <th scope='row' className='text-center'>Total:</th>
                                 <th scope='row' className='text-center'>{formatter.format(total)}</th>
                                 <th scope='row'></th>
-                                {/* <th scope='row'></th> */}
+                                <th scope='row'></th>
                             </tr>
                         </tfoot>
                     </table>
