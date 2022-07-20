@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import formatPhoneNumber from '../Helpers/phoneNumberFormatter';
 
 function SellerInput(props) {
     const navigate = useNavigate();
@@ -9,6 +10,23 @@ function SellerInput(props) {
             ...props.sellerData,
             [e.target.id]: e.target.value
         })
+    }
+
+    const handlePhoneNumberInput = e => {
+        const { data, inputType } = e.nativeEvent;
+        const { value } = e.target;
+        if(isNaN(data)) return;
+        if(value.length > 12) return;
+        let phoneNumber;
+
+        if(inputType === 'deleteContentBackward') phoneNumber = value;
+        else phoneNumber = formatPhoneNumber(value);
+
+        props.updateSellerData({
+            ...props.sellerData,
+            phone: phoneNumber
+        })
+
     }
 
     const handleSubmit = e => {
@@ -45,7 +63,7 @@ function SellerInput(props) {
                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                             placeholder='012-345-6789'
                             value={props.sellerData.phone} required
-                            onChange={updateInput} className='form-control'
+                            onChange={handlePhoneNumberInput} className='form-control'
                         />
                     </div>
                 </div>
