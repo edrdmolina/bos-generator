@@ -123,13 +123,13 @@ function Document(props) {
             </div>
 
             <div className='row my-5 justify-content-center'>
-                <div className='col-4 d-flex justify-content-center'>
+                <div className='col-3 d-flex justify-content-center'>
                     <Link className='btn btn-secondary' to='/items'>BACK</Link>
                 </div>
-                <div className='col-4 d-flex justify-content-center'>
+                <div className='col-3 d-flex justify-content-center'>
                     <Link className='btn btn-danger' to='/' onClick={refreshPage}>RESET</Link>
                 </div>
-                <div className='col-4 d-flex justify-content-center'>
+                <div className='col-3 d-flex justify-content-center'>
                     <Pdf targetRef={ref} filename={`${documentID}.pdf`}>
                         {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>DOWNLOAD</button>}
                     </Pdf>
