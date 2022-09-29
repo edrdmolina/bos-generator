@@ -15,7 +15,7 @@ function App() {
     city: '',
     state: '',
     zipCode: '',
-    country: '',
+    country: 'United States',
   });
   const [items, updateItems] = useState([]);
 
