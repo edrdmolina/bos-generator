@@ -38,7 +38,9 @@ function ItemInfo(props) {
     }
 
     const showItems = items.map((item, i) => {
-        total += parseFloat(item.price);
+        let priceByQuantity = parseFloat(item.price) * parseFloat(item.quantity);
+
+        total += priceByQuantity;
 
         return (
             <tr key={i}>
