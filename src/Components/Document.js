@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import createHumanDate from '../Helpers/createHumanDate';
 import createDocumentID from '../Helpers/createDocumentID';
 import formatter from '../Helpers/formatter';
-import CoastalLogo from '../Assets/CoastalLogo.jpg';
+import CoastalLogo from '../Assets/CoastalLogoCircle.png';
 
 import '../Styles/Document.css';
 
@@ -24,7 +24,8 @@ function Document(props) {
     let total = 0;
 
     const showItems = props.items.map((item, i) => {
-        total += parseFloat(item.price);
+        let priceByQuantity = parseFloat(item.price) * parseFloat(item.quantity);
+        total += priceByQuantity;
 
         return (
             <tr key={i}>
