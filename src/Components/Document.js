@@ -1,5 +1,6 @@
 import React from 'react';
-import Pdf from "react-to-pdf";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { Link } from 'react-router-dom';
 
 import createHumanDate from '../Helpers/createHumanDate';
@@ -19,6 +20,25 @@ function Document(props) {
         setTimeout(()=>{
             window.location.reload(false);
         }, 100);
+    }
+
+    const downloadPdf = async () => {
+        const element = ref.current;
+        const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            logging: false
+        });
+
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'px',
+            format: [canvas.width, canvas.height]
+        });
+
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save(`${documentID}.pdf`);
     }
    
     let total = 0;
@@ -131,9 +151,7 @@ function Document(props) {
                     <Link className='btn btn-danger' to='/' onClick={refreshPage}>RESET</Link>
                 </div>
                 <div className='col-3 d-flex justify-content-center'>
-                    <Pdf targetRef={ref} filename={`${documentID}.pdf`}>
-                        {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>DOWNLOAD</button>}
-                    </Pdf>
+                    <button className='btn btn-primary' onClick={downloadPdf}>DOWNLOAD</button>
                 </div>
             </div>
         </div>
