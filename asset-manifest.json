@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/bos-generator/static/css/main.4b757115.css",
-    "main.js": "/bos-generator/static/js/main.2e08b47c.js",
-    "static/js/236.de7710d1.chunk.js": "/bos-generator/static/js/236.de7710d1.chunk.js",
-    "static/js/703.14350b3c.chunk.js": "/bos-generator/static/js/703.14350b3c.chunk.js",
-    "static/js/573.555571f7.chunk.js": "/bos-generator/static/js/573.555571f7.chunk.js",
-    "static/js/787.f61bea1e.chunk.js": "/bos-generator/static/js/787.f61bea1e.chunk.js",
-    "static/media/CoastalLogo.png": "/bos-generator/static/media/CoastalLogo.f1aa07b10bba7983a7b9.png",
-    "static/media/CoastalLogo.jpg": "/bos-generator/static/media/CoastalLogo.3a45f8e64ae88116b08f.jpg",
+    "main.css": "/bos-generator/static/css/main.7d7adc68.css",
+    "main.js": "/bos-generator/static/js/main.0ae73cb7.js",
+    "static/js/213.cecd451e.chunk.js": "/bos-generator/static/js/213.cecd451e.chunk.js",
+    "static/js/455.3673fed3.chunk.js": "/bos-generator/static/js/455.3673fed3.chunk.js",
+    "static/js/488.2184daf4.chunk.js": "/bos-generator/static/js/488.2184daf4.chunk.js",
+    "static/media/CoastalLogoCircle.png": "/bos-generator/static/media/CoastalLogoCircle.37a70f2172ed5390e2c1.png",
+    "static/media/CoastalLogo.png": "/bos-generator/static/media/CoastalLogo.0d5e2b86c4505e0fe6e4.png",
     "index.html": "/bos-generator/index.html",
-    "main.4b757115.css.map": "/bos-generator/static/css/main.4b757115.css.map",
-    "main.2e08b47c.js.map": "/bos-generator/static/js/main.2e08b47c.js.map",
-    "236.de7710d1.chunk.js.map": "/bos-generator/static/js/236.de7710d1.chunk.js.map",
-    "703.14350b3c.chunk.js.map": "/bos-generator/static/js/703.14350b3c.chunk.js.map",
-    "573.555571f7.chunk.js.map": "/bos-generator/static/js/573.555571f7.chunk.js.map",
-    "787.f61bea1e.chunk.js.map": "/bos-generator/static/js/787.f61bea1e.chunk.js.map"
+    "main.7d7adc68.css.map": "/bos-generator/static/css/main.7d7adc68.css.map",
+    "main.0ae73cb7.js.map": "/bos-generator/static/js/main.0ae73cb7.js.map",
+    "213.cecd451e.chunk.js.map": "/bos-generator/static/js/213.cecd451e.chunk.js.map",
+    "455.3673fed3.chunk.js.map": "/bos-generator/static/js/455.3673fed3.chunk.js.map",
+    "488.2184daf4.chunk.js.map": "/bos-generator/static/js/488.2184daf4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b757115.css",
-    "static/js/main.2e08b47c.js"
+    "static/css/main.7d7adc68.css",
+    "static/js/main.0ae73cb7.js"
   ]
 }
