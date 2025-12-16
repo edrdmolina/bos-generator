@@ -9,7 +9,7 @@ import EditModal from './EditModal';
 import '../Styles/ItemInput.css';
 
 function ItemInfo(props) {
-    const { items, updateItems } = props;
+    const { items, updateItems, employeeName, updateEmployeeName } = props;
 
     const [title, updateTitle] = useState('');
     const [quantity, updateQuantity] = useState(1);
@@ -130,12 +130,35 @@ function ItemInfo(props) {
                 </div>
 
             </div>
-            <div className='row my-5 justify-content-center'>
-                <div className='col-6 d-flex justify-content-center'>
+            <div className='row my-5 justify-content-center align-items-end'>
+                <div className='col-md-4 d-flex justify-content-center'>
                     <Link className='btn btn-secondary' to='/'>BACK</Link>
                 </div>
-                <div className='col-6 d-flex justify-content-center'>
-                    <Link className='btn btn-warning' to='/document'>CONTINUE</Link>
+                <div className='col-md-4 mb-3'>
+                    <label className='form-label' htmlFor='employeeName'>Employee Name</label>
+                    <input
+                        className='form-control'
+                        type='text'
+                        name='employeeName'
+                        id='employeeName'
+                        placeholder='Enter your name'
+                        value={employeeName}
+                        onChange={(e) => updateEmployeeName(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className='col-md-4 d-flex justify-content-center'>
+                    <Link
+                        className={`btn btn-warning ${!employeeName.trim() ? 'disabled' : ''}`}
+                        to='/document'
+                        onClick={(e) => {
+                            if (!employeeName.trim()) {
+                                e.preventDefault();
+                            }
+                        }}
+                    >
+                        CONTINUE
+                    </Link>
                 </div>
             </div>
 

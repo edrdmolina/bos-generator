@@ -98,7 +98,7 @@ function Document(props) {
 
                 <div className='row mt-2'>
                     <div className='col-12'>
-                        <h5>Seller Information:</h5>
+                        <h5>Seller Information: <span style={{fontWeight: 'normal', fontSize: '1rem'}}>Purchased by {props.employeeName}</span></h5>
                         <div className='row'>
                             <div className='col'>
                                 <h6 className='m-0'>Name:</h6>

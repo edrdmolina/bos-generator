@@ -4,7 +4,7 @@ import CoastalLogo from '../Assets/CoastalLogo.png';
 import ItemInput from '../Components/ItemInput';
 
 function ItemInfo(props) {
-    const { items, updateItems } = props;
+    const { items, updateItems, employeeName, updateEmployeeName } = props;
 
     return (
         <div className='container'>
@@ -13,7 +13,7 @@ function ItemInfo(props) {
                     <img className='coastal-logo' src={CoastalLogo} alt='logo'/>
                 </div>
             </div>
-            <ItemInput updateItems={updateItems} items={items} />
+            <ItemInput updateItems={updateItems} items={items} employeeName={employeeName} updateEmployeeName={updateEmployeeName} />
         </div>
     )
 }
