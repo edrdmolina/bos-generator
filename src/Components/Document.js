@@ -31,13 +31,36 @@ function Document(props) {
         });
 
         const imgData = canvas.toDataURL('image/png');
+
+        // Use letter size (8.5 x 11 inches)
         const pdf = new jsPDF({
             orientation: 'portrait',
-            unit: 'px',
-            format: [canvas.width, canvas.height]
+            unit: 'in',
+            format: 'letter'
         });
 
-        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        // Get PDF dimensions
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+
+        // Calculate image dimensions to fit PDF page with margins
+        const margin = 0.5; // 0.5 inch margins
+        const availableWidth = pdfWidth - (2 * margin);
+        const availableHeight = pdfHeight - (2 * margin);
+
+        // Calculate scaling to fit content
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = Math.min(availableWidth / (imgWidth / 96), availableHeight / (imgHeight / 96));
+
+        const scaledWidth = (imgWidth / 96) * ratio;
+        const scaledHeight = (imgHeight / 96) * ratio;
+
+        // Center the image
+        const x = (pdfWidth - scaledWidth) / 2;
+        const y = margin;
+
+        pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
         pdf.save(`${documentID}.pdf`);
     }
    
@@ -74,7 +97,7 @@ function Document(props) {
                 
                 <div className='row mt-5'>
                     <div className='col-9'>
-                        <h5>Buyer Information:</h5>
+                        <h5>Buyer Information: <span style={{fontWeight: 'normal', fontSize: '1rem'}}>Purchased by {props.employeeName}</span></h5>
                         <div className='row'>
                             <div className='col'>
                                 <h6 className='m-0'>Address:</h6>
@@ -98,7 +121,7 @@ function Document(props) {
 
                 <div className='row mt-2'>
                     <div className='col-12'>
-                        <h5>Seller Information: <span style={{fontWeight: 'normal', fontSize: '1rem'}}>Purchased by {props.employeeName}</span></h5>
+                        <h5>Seller Information:</h5>
                         <div className='row'>
                             <div className='col'>
                                 <h6 className='m-0'>Name:</h6>
